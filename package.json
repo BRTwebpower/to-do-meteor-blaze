@@ -1,0 +1,26 @@
+{
+  "name": "meteor-todos-blaze",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.23.5",
+    "bcrypt": "^5.1.1",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.14.1",
+    "meteor-node-stubs": "^1.2.12",
+    "sortable": "^2.0.0",
+    "sortablejs": "^1.15.6"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}

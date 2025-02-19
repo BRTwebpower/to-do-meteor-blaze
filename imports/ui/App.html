@@ -1,0 +1,74 @@
+<body>
+    {{> mainContainer }}
+</body>
+
+<template name="mainContainer">
+    <div class="app">
+        <header>
+            <div class="app-bar">
+                <div class="app-header">
+                    <h1>📝️ To Do List{{incompleteCount}}</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="main">
+            <!-- {{#if isUserLogged}} -->
+                <!-- <div class="user">
+                    {{getUser.username}} 🚪
+                </div> -->
+                {{> form }}
+                <!-- <div class="filter">
+                    <button id="hide-completed-button">
+                        {{#if hideCompleted}}
+                        Show All
+                        {{else}}
+                        Hide Completed
+                        {{/if}}
+                    </button>
+                </div>
+                {{#if isLoading}}
+                    <div class="loading">loading...</div>
+                {{/if}}-->
+                <div class="filter">
+                    <button id="hide-completed-button">
+                        {{#if hideCompleted}}
+                        Show All
+                        {{else}}
+                        Hide Completed
+                        {{/if}}
+                    </button>
+                </div>
+                <div class="container">
+                    {{#each taskGroup in tasks}}
+                    <div id="category-{{taskGroup.priority}}" data-category="{{taskGroup.priority}}">
+                        <h3>
+                            {{priorityLabels taskGroup.priority}}
+                        </h3>
+                        <ul class="sortable-list tasks">
+                            {{#each item in taskGroup.tasks}}
+                            {{>task item}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{/each}}
+                </div>
+            <!-- {{else}}
+                {{> login }}
+            {{/if}} -->
+        </div>
+    </div>
+</template>
+
+<template name="form">
+    <form class="task-form">
+        <input type="text" name="text" placeholder="Type to add new tasks" required />
+        <select name="priority" id="priority">
+            <option value="">select priority</option>
+            {{#each priorityCategories}}
+            <option value="{{value}}">{{label}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+</template>

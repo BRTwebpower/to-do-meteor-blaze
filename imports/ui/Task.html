@@ -1,0 +1,23 @@
+<template name="task">
+    <li class="sortable-item" data-id="{{_id}}" data-category="{{priority}}">
+        <input type="checkbox" checked="{{isChecked}}" class="toggle-checked" />
+        <span>{{text}}</span>
+        <button class="edit">Edit</button>
+        <button class="delete">&times;</button>
+    </li>
+    <li id="edit-{{_id}}" style="display: none;">
+        <form class="listtask-form">
+            <input type="text" name="text" value="{{text}}" required />
+            <select name="priority">
+                <option value="">select priority</option>
+                {{#each taskPriorityCategories}}
+                
+                <option value="{{value}}" {{isSelected value}}>{{label}}</option>
+                
+                {{/each}}
+            </select>
+            <button type="submit" class="update">Update Task</button>
+            <button class="cancel" type="button">Cancel</button>
+        </form>
+    </li>
+</template>
